@@ -1,0 +1,6 @@
+CREATE TABLE "messages" (
+	"id"	INTEGER NOT NULL UNIQUE,
+	"name"	TEXT NOT NULL,
+	"message"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
