@@ -1,5 +1,5 @@
-import Message from "../model/Message-model";
 import db from "../db";
+import Message from "../model/message-model";
 
 class MessageRepositorie {
 
@@ -19,6 +19,27 @@ class MessageRepositorie {
                 }
             });
         })
+    }
+
+    createMessage(message: Message): Promise<Message> {
+
+        if (message.name.length === 0 || message.message.length === 0) {
+            return Promise.reject("Nome e mensagem são obrigatórios");
+        }
+
+        const query = `
+            INSERT INTO messages (name, message)
+            VALUES (?, ?)
+        `;
+        return new Promise((resolve, reject) => {
+            db.run(query, [message.name, message.message], (err) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(message);
+                }
+            });
+        });
     }
 
 }

@@ -1,9 +1,10 @@
-import Contact from "./pages/Contact";
-// import Home from "./pages/Home";
+import Paths from "./routes";
 
 function App() {
   return (
-    <Contact />
+    <div className="App">
+      <Paths />
+    </div>
   );
 }
 
